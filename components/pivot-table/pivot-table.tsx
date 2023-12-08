@@ -3,7 +3,8 @@
 // import { GridColDef } from "@mui/x-data-grid/models";
 import React from "react";
 import ReactDOM from "react-dom";
-import PivotTableUI from "react-pivottable/PivotTableUI";
+//import PivotTableUI from "react-pivottable/PivotTableUI";
+import PivotTable from "react-pivottable/PivotTable";
 import "react-pivottable/pivottable.css";
 import TableRenderers from "react-pivottable/TableRenderers";
 
@@ -43,11 +44,11 @@ export default function DataPivotTable() {
 
     //Try to see options to expand totals to complete row and hide totals on right
     return <>
-        {typeof window !== 'undefined' ? (<PivotTableUI data={rows} onChange={s => setP(s)}
+        {typeof window !== 'undefined' ? (<PivotTable data={rows} onChange={(s: any) => setP(s)}
             renderers={Object.assign({}, TableRenderers)} //,PlotlyRenderers)}
-            rows={["day", "$3_Match", "channel", "id", "real_value"]}
+            rows={["day", "channel", "real_value", "$3_Match"]}
             {...p}
-        />) : <></>} 
+        />) : <>Loading...</>} 
     </>;
     } catch(err) {console.log("error",err);return <>Loading...</>;}
 }

@@ -10,7 +10,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import DataPivotTable from '@/components/pivot-table/pivot-table';
-// import DenseTable from '@/components/basic-table/basic-table';
+import DenseTable from '@/components/basic-table/basic-table';
+import DataTable from '@/components/data-table/data-table';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -31,7 +32,7 @@ function CustomTabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -55,40 +56,74 @@ export default function VbgHome() {
   return (
     <>
       <Box component="main">
-          Welcome to NBS VBG Dashboards.
           <Box>
             <Grid container>
               <Grid item xs={12}>
                 <Box sx={{ width: '100%' }}>
                   <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="Tabs for different data groups">
-                      <Tab label="MVP" {...a11yProps(0)} />
-                      <Tab label="Item Two" {...a11yProps(1)} />
-                      <Tab label="Item Three" {...a11yProps(2)} />
-                      <Tab label="Item Four" {...a11yProps(3)} />
+                      <Tab label="Quote to NBS Next Bill" {...a11yProps(0)} />
+                      <Tab label="Quote to NBS Steady Stage" {...a11yProps(1)} disabled />
+                      <Tab label="Quote to Bill CIR%" {...a11yProps(2)} disabled />
+                      <Tab label="Quote CIR%" {...a11yProps(3)} disabled />
+                      <Tab label="Summary" {...a11yProps(3)} />
                     </Tabs>
                   </Box>
                   <CustomTabPanel value={value} index={0}>
-                      <DataPivotTable />
+                      <DataTable />
+                      <Grid container>
+                      <Grid item xs={12} md={6}>
+                        <BarCharts />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <LineCharts />
+                      </Grid>
+                    </Grid>
                   </CustomTabPanel>
                   <CustomTabPanel value={value} index={1}>
                     to be soon available
+                    <Grid container>
+                      <Grid item xs={12} md={6}>
+                        <BarCharts />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <LineCharts />
+                      </Grid>
+                    </Grid>
                   </CustomTabPanel>
                   <CustomTabPanel value={value} index={2}>
                     to be soon available
+                    <Grid container>
+                      <Grid item xs={12} md={6}>
+                        <BarCharts />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <LineCharts />
+                      </Grid>
+                    </Grid>
                   </CustomTabPanel>
                   <CustomTabPanel value={value} index={3}>
                     to be soon available
+                    <Grid container>
+                      <Grid item xs={12} md={6}>
+                        <BarCharts />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <LineCharts />
+                      </Grid>
+                    </Grid>
+                  </CustomTabPanel>
+                  <CustomTabPanel value={value} index={4}>
+                    <Grid container>
+                      <Grid item xs={12} md={6}>
+                        <BarCharts />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <LineCharts />
+                      </Grid>
+                    </Grid>
                   </CustomTabPanel>
                 </Box>
-              </Grid>
-            </Grid>
-            <Grid container>
-              <Grid item xs={12} md={6}>
-                <BarCharts />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <LineCharts />
               </Grid>
             </Grid>
           </Box>
