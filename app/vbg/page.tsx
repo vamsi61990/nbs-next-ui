@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import DataPivotTable from '@/components/pivot-table/pivot-table';
 import DenseTable from '@/components/basic-table/basic-table';
 import DataTable from '@/components/data-table/data-table';
+import InfiniteScroll from '@/components/infinite-scroll/main';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -70,7 +71,8 @@ export default function VbgHome() {
                     </Tabs>
                   </Box>
                   <CustomTabPanel value={value} index={0}>
-                      <DataTable />
+                    <InfiniteScroll/>
+                      {/* <DataTable /> */}
                       <Grid container>
                       <Grid item xs={12} md={6}>
                         <BarCharts />
