@@ -13,12 +13,14 @@ import DataPivotTable from '@/components/pivot-table/pivot-table';
 import DenseTable from '@/components/basic-table/basic-table';
 import DataTable from '@/components/data-table/data-table';
 import InfiniteScroll from '@/components/infinite-scroll/main';
-
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
 }
+
+const queryClient = new QueryClient()
 
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -56,6 +58,7 @@ export default function VbgHome() {
 
   return (
     <>
+     <QueryClientProvider  client={queryClient}>
       <Box component="main">
           <Box>
             <Grid container>
@@ -71,7 +74,7 @@ export default function VbgHome() {
                     </Tabs>
                   </Box>
                   <CustomTabPanel value={value} index={0}>
-                    <InfiniteScroll/>
+                    <InfiniteScroll/> 
                       {/* <DataTable /> */}
                       <Grid container>
                       <Grid item xs={12} md={6}>
@@ -130,6 +133,7 @@ export default function VbgHome() {
             </Grid>
           </Box>
       </Box>
+     </QueryClientProvider>
     </>
   )
 }
